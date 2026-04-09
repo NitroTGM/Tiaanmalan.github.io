@@ -4,24 +4,62 @@
   <title>For You ❤️</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    input {
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 25px;
+      margin-top: 15px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 25px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff1e4d;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .main {
+      text-align: center;
       padding: 40px;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.2em;
-      max-width: 500px;
-      margin: auto;
+      display: none;
+      animation: fadeIn 1.5s ease-in;
     }
 
     img {
@@ -31,57 +69,83 @@
       box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
 
-    .btn {
-      margin-top: 30px;
+    .reveal {
+      margin-top: 25px;
       padding: 12px 20px;
-      background: #ff4d6d;
-      border: none;
       border-radius: 25px;
-      color: white;
-      font-size: 1em;
+      background: #ff4d6d;
       cursor: pointer;
     }
 
-    .hidden {
+    .message {
       display: none;
       margin-top: 20px;
-      font-size: 1.2em;
       color: #ffccd5;
+      font-size: 1.2em;
+    }
+
+    iframe {
+      margin-top: 30px;
+      border-radius: 12px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Hey you ❤️</h1>
-
-  <p>
-    If you’re seeing this… it means you tapped something I made just for you.
-  </p>
-
-  <img src="https://via.placeholder.com/220" alt="us">
-
-  <p>
-    Every moment with you feels like something I never want to end.
-  </p>
-
-  <button class="btn" onclick="revealMessage()">Tap me 💌</button>
-
-  <div id="message" class="hidden">
-    I love you more than I probably say… and I’d choose you every single time.
+  <!-- 🔐 Password Screen -->
+  <div class="container" id="login">
+    <h1>Hey you ❤️</h1>
+    <p>Enter the secret code to continue</p>
+    <input type="password" id="password" placeholder="Your code...">
+    <button onclick="checkPassword()">Unlock 💌</button>
   </div>
 
-  <br><br>
+  <!-- 💖 Main Content -->
+  <div class="main" id="mainContent">
+    <h1>You made it ❤️</h1>
 
-  <iframe style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/3AJwUDP919kvQ9QcozQPxg"
-    width="300" height="80" frameborder="0"
-    allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-  </iframe>
+    <p>
+      If you're here… it means you’re someone really special to me.
+    </p>
+
+    <img src="https://via.placeholder.com/220">
+
+    <p>
+      Being with you just feels right in a way I can’t even explain.
+    </p>
+
+    <div class="reveal" onclick="showMessage()">Tap me 💌</div>
+
+    <div class="message" id="hiddenMessage">
+      I’d choose you. Every time. No question.
+    </div>
+
+    <iframe src="https://open.spotify.com/embed/track/3AJwUDP919kvQ9QcozQPxg"
+      width="300" height="80" frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media;">
+    </iframe>
+  </div>
 
   <script>
-    function revealMessage() {
-      document.getElementById("message").style.display = "block";
+    function checkPassword() {
+      var pass = document.getElementById("password").value;
+
+      if (pass === "1234") { // 🔑 CHANGE THIS
+        document.getElementById("login").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        alert("Wrong code 😅");
+      }
+    }
+
+    function showMessage() {
+      document.getElementById("hiddenMessage").style.display = "block";
     }
   </script>
 
