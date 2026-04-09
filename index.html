@@ -1,117 +1,31 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>For You ❤️</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="landing is-preload">
 
-		<div id="page-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Us ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-			<!-- Header -->
-			<header id="header" class="alt">
-				<h1><a href="index.html">For You ❤️</a></h1>
-			</header>
+    <div class="container">
+        <h1 id="mainText">Hey love 💕</h1>
+        <p id="subText">If you're here... I probably miss you a lot.</p>
 
-			<!-- Banner -->
-			<section id="banner">
-				<div class="inner">
-					<h2>Hey you ❤️</h2>
-					<p>
-						If you're seeing this...<br />
-						it means you tapped something I made just for you.<br />
-						And honestly... that already says a lot.
-					</p>
-					<ul class="actions special">
-						<li><a href="#one" class="button primary">Keep going 💌</a></li>
-					</ul>
-				</div>
-				<a href="#one" class="more scrolly">Scroll</a>
-			</section>
+        <button id="revealBtn">Tap me 💌</button>
 
-			<!-- One -->
-			<section id="one" class="wrapper style1 special">
-				<div class="inner">
-					<header class="major">
-						<h2>
-							I don’t think you realize<br />
-							how much you mean to me
-						</h2>
-						<p>
-							It’s not just the big moments...<br />
-							it’s the small things, the random laughs,<br />
-							the way everything just feels right with you.
-						</p>
-					</header>
-				</div>
-			</section>
+        <div id="hiddenMessage" class="hidden">
+            <p>You mean everything to me. No matter where we are ❤️</p>
+        </div>
 
-			<!-- Two -->
-			<section id="two" class="wrapper alt style2">
-				<section class="spotlight">
-					<div class="content">
-						<h2>Every moment</h2>
-						<p>
-							Every moment with you becomes a memory I don’t want to lose.<br />
-							Even the simple ones hit different when it’s you.
-						</p>
-					</div>
-				</section>
+        <div class="counter">
+            <p>I missed you this many times:</p>
+            <h2 id="count">0</h2>
+            <button id="countBtn">+1 🥺</button>
+        </div>
+    </div>
 
-				<section class="spotlight">
-					<div class="content">
-						<h2>If I had to choose</h2>
-						<p>
-							I’d choose you.<br />
-							Over and over again.<br />
-							No hesitation. No second thoughts.
-						</p>
-					</div>
-				</section>
-
-				<section class="spotlight">
-					<div class="content">
-						<h2>Just so you know</h2>
-						<p>
-							You matter to me more than I probably say.<br />
-							And I’m really glad it’s you.
-						</p>
-					</div>
-				</section>
-			</section>
-
-			<!-- CTA -->
-			<section id="cta" class="wrapper style4">
-				<div class="inner">
-					<header>
-						<h2>One last thing ❤️</h2>
-						<p>
-							If you ever forget how much I care about you…<br />
-							just come back here.
-						</p>
-					</header>
-				</div>
-			</section>
-
-			<!-- Footer -->
-			<footer id="footer">
-				<ul class="copyright">
-					<li>Made just for you ❤️</li>
-				</ul>
-			</footer>
-
-		</div>
-
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-	</body>
+    <script src="script.js"></script>
+</body>
 </html>
