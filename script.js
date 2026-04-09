@@ -6,7 +6,7 @@ toggle.addEventListener("click", () => {
 });
 
 
-// 💬 RANDOM LOVE NOTES
+// 💬 CYCLING LOVE NOTES
 const notes = [
     "I love you more than yesterday ❤️",
     "You’re my favorite person ever 🥺",
@@ -17,12 +17,18 @@ const notes = [
     "Jy is net myne, vir ewig en altyd😍🤭"
 ];
 
-const noteBtn = document.getElementById("noteBtn");
+let currentIndex = 0;
+
+const heartBtn = document.getElementById("heartBtn");
 const loveNote = document.getElementById("loveNote");
 
-noteBtn.addEventListener("click", () => {
-    const random = notes[Math.floor(Math.random() * notes.length)];
-    loveNote.textContent = random;
+heartBtn.addEventListener("click", () => {
+    loveNote.textContent = notes[currentIndex];
+
+    currentIndex++;
+    if (currentIndex >= notes.length) {
+        currentIndex = 0; // loop back to start
+    }
 });
 
 
