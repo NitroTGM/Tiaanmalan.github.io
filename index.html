@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +9,35 @@
 <body>
 
     <div class="container">
-        <h1 id="mainText">Hey love 💕</h1>
-        <p id="subText">If you're here... I probably miss you a lot.</p>
 
-        <button id="revealBtn">Tap me 💌</button>
+        <button id="darkModeToggle">🌙</button>
 
-        <div id="hiddenMessage" class="hidden">
-            <p>You mean everything to me. No matter where we are ❤️</p>
+        <h1>Hey love 💕</h1>
+        <p>If you're here... I miss you.</p>
+
+        <!-- MUSIC -->
+        <audio id="bgMusic" autoplay loop>
+            <source src="song.mp3" type="audio/mp3">
+        </audio>
+
+        <!-- RANDOM LOVE NOTE -->
+        <button id="noteBtn">Give me a message 💌</button>
+        <p id="loveNote"></p>
+
+        <!-- COUNTDOWN -->
+        <div class="countdown">
+            <h3>Next time we see each other in:</h3>
+            <h2 id="timer"></h2>
         </div>
 
-        <div class="counter">
-            <p>I missed you this many times:</p>
-            <h2 id="count">0</h2>
-            <button id="countBtn">+1 🥺</button>
+        <!-- PHOTO GALLERY -->
+        <h3>Our memories 📸</h3>
+        <div class="gallery">
+            <img src="img1.jpg">
+            <img src="img2.jpg">
+            <img src="img3.jpg">
         </div>
+
     </div>
 
     <script src="script.js"></script>
