@@ -12,7 +12,9 @@ const notes = [
     "You’re my favorite person ever 🥺",
     "I can’t wait to see you again 💕",
     "You make everything better ✨",
-    "Missing you extra today 😭"
+    "Missing you extra today 😭",
+    "Alles sal okay wees 💕",
+    "Jy is net myne, vir ewig en altyd😍🤭"
 ];
 
 const noteBtn = document.getElementById("noteBtn");
