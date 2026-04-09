@@ -1,153 +1,117 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-  <title>For You ❤️</title>
+	<head>
+		<title>For You ❤️</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="landing is-preload">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+		<div id="page-wrapper">
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+			<!-- Header -->
+			<header id="header" class="alt">
+				<h1><a href="index.html">For You ❤️</a></h1>
+			</header>
 
-    .container {
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-    }
+			<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h2>Hey you ❤️</h2>
+					<p>
+						If you're seeing this...<br />
+						it means you tapped something I made just for you.<br />
+						And honestly... that already says a lot.
+					</p>
+					<ul class="actions special">
+						<li><a href="#one" class="button primary">Keep going 💌</a></li>
+					</ul>
+				</div>
+				<a href="#one" class="more scrolly">Scroll</a>
+			</section>
 
-    input {
-      padding: 12px;
-      width: 100%;
-      border: none;
-      border-radius: 25px;
-      margin-top: 15px;
-      font-size: 1em;
-      text-align: center;
-    }
+			<!-- One -->
+			<section id="one" class="wrapper style1 special">
+				<div class="inner">
+					<header class="major">
+						<h2>
+							I don’t think you realize<br />
+							how much you mean to me
+						</h2>
+						<p>
+							It’s not just the big moments...<br />
+							it’s the small things, the random laughs,<br />
+							the way everything just feels right with you.
+						</p>
+					</header>
+				</div>
+			</section>
 
-    button {
-      margin-top: 15px;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      border-radius: 25px;
-      background: #ff4d6d;
-      color: white;
-      font-size: 1em;
-      cursor: pointer;
-    }
+			<!-- Two -->
+			<section id="two" class="wrapper alt style2">
+				<section class="spotlight">
+					<div class="content">
+						<h2>Every moment</h2>
+						<p>
+							Every moment with you becomes a memory I don’t want to lose.<br />
+							Even the simple ones hit different when it’s you.
+						</p>
+					</div>
+				</section>
 
-    button:hover {
-      background: #ff1e4d;
-    }
+				<section class="spotlight">
+					<div class="content">
+						<h2>If I had to choose</h2>
+						<p>
+							I’d choose you.<br />
+							Over and over again.<br />
+							No hesitation. No second thoughts.
+						</p>
+					</div>
+				</section>
 
-    .hidden {
-      display: none;
-    }
+				<section class="spotlight">
+					<div class="content">
+						<h2>Just so you know</h2>
+						<p>
+							You matter to me more than I probably say.<br />
+							And I’m really glad it’s you.
+						</p>
+					</div>
+				</section>
+			</section>
 
-    .main {
-      text-align: center;
-      padding: 40px;
-      display: none;
-      animation: fadeIn 1.5s ease-in;
-    }
+			<!-- CTA -->
+			<section id="cta" class="wrapper style4">
+				<div class="inner">
+					<header>
+						<h2>One last thing ❤️</h2>
+						<p>
+							If you ever forget how much I care about you…<br />
+							just come back here.
+						</p>
+					</header>
+				</div>
+			</section>
 
-    img {
-      width: 220px;
-      border-radius: 20px;
-      margin-top: 20px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="copyright">
+					<li>Made just for you ❤️</li>
+				</ul>
+			</footer>
 
-    .reveal {
-      margin-top: 25px;
-      padding: 12px 20px;
-      border-radius: 25px;
-      background: #ff4d6d;
-      cursor: pointer;
-    }
+		</div>
 
-    .message {
-      display: none;
-      margin-top: 20px;
-      color: #ffccd5;
-      font-size: 1.2em;
-    }
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-    iframe {
-      margin-top: 30px;
-      border-radius: 12px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- 🔐 Password Screen -->
-  <div class="container" id="login">
-    <h1>Hey you ❤️</h1>
-    <p>Enter the secret code to continue</p>
-    <input type="password" id="password" placeholder="Your code...">
-    <button onclick="checkPassword()">Unlock 💌</button>
-  </div>
-
-  <!-- 💖 Main Content -->
-  <div class="main" id="mainContent">
-    <h1>You made it ❤️</h1>
-
-    <p>
-      If you're here… it means you’re someone really special to me.
-    </p>
-
-    <img src="https://via.placeholder.com/220">
-
-    <p>
-      Being with you just feels right in a way I can’t even explain.
-    </p>
-
-    <div class="reveal" onclick="showMessage()">Tap me 💌</div>
-
-    <div class="message" id="hiddenMessage">
-      I’d choose you. Every time. No question.
-    </div>
-
-    <iframe src="https://open.spotify.com/embed/track/3AJwUDP919kvQ9QcozQPxg"
-      width="300" height="80" frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media;">
-    </iframe>
-  </div>
-
-  <script>
-    function checkPassword() {
-      var pass = document.getElementById("password").value;
-
-      if (pass === "1234") { // 🔑 CHANGE THIS
-        document.getElementById("login").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-      } else {
-        alert("Wrong code 😅");
-      }
-    }
-
-    function showMessage() {
-      document.getElementById("hiddenMessage").style.display = "block";
-    }
-  </script>
-
-</body>
+	</body>
 </html>
