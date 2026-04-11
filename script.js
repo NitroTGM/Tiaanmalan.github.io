@@ -5,8 +5,7 @@ toggle.addEventListener("click", () => {
     document.body.classList.toggle("dark");
 });
 
-
-// 💬 CYCLING LOVE NOTES
+// 💬 MESSAGES
 const notes = [
     "I love you more than yesterday ❤️",
     "You’re my favorite person ever 🥺",
@@ -22,19 +21,36 @@ let currentIndex = 0;
 const heartBtn = document.getElementById("heartBtn");
 const loveNote = document.getElementById("loveNote");
 
+// ❤️ CLICK EVENT
 heartBtn.addEventListener("click", () => {
     loveNote.textContent = notes[currentIndex];
+    currentIndex = (currentIndex + 1) % notes.length;
 
-    currentIndex++;
-    if (currentIndex >= notes.length) {
-        currentIndex = 0; // loop back to start
+    const container = document.querySelector(".heart-container");
+
+    for (let i = 0; i < 6; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("floating-heart");
+
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+
+        // random spread
+        const x = (Math.random() - 0.5) * 80;
+        const y = Math.random() * -80;
+
+        heart.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(45deg)`;
+
+        container.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1500);
     }
 });
 
-
 // 🕒 COUNTDOWN
-const targetDate = new Date("2026-08-30").getTime(); // CHANGE THIS
-
+const targetDate = new Date("2026-08-30").getTime();
 const timer = document.getElementById("timer");
 
 setInterval(() => {
@@ -47,12 +63,10 @@ setInterval(() => {
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
     timer.textContent = `${days}d`;
 }, 1000);
 
-
-// 🎵 MUSIC AUTOPLAY FIX (for browsers that block it)
+// 🎵 MUSIC AUTOPLAY FIX
 window.addEventListener("click", () => {
     const music = document.getElementById("bgMusic");
     music.play();
