@@ -8,23 +8,20 @@
 </head>
 <body>
 
-<!-- 🌌 ANIMATED BACKGROUND -->
+<!-- 🌌 BACKGROUND -->
 <div class="background">
-  <span></span><span></span><span></span><span></span><span></span>
-  <span></span><span></span><span></span><span></span><span></span>
-  <span></span><span></span><span></span><span></span><span></span>
-  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span>
 </div>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mp3">
+</audio>
 
 <div class="container">
 
     <h1>Hey love 💕</h1>
     <p class="subtitle">If you're here… it means I miss you a little extra today.</p>
-
-    <!-- 🎵 MUSIC -->
-    <audio id="bgMusic" autoplay loop>
-        <source src="song.mp3" type="audio/mp3">
-    </audio>
 
     <!-- ❤️ HEART -->
     <div class="heart-container">
@@ -45,6 +42,23 @@
         <img src="img1.jpg">
         <img src="img2.jpg">
         <img src="img3.jpg">
+    </div>
+
+    <!-- 🎬 VIDEOS -->
+    <h3>Our moments 🎥</h3>
+
+    <div class="video-gallery">
+        <video class="videoPlayer" controls>
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+
+        <video class="videoPlayer" controls>
+            <source src="video2.mp4" type="video/mp4">
+        </video>
+
+        <video class="videoPlayer" controls>
+            <source src="video3.mp4" type="video/mp4">
+        </video>
     </div>
 
 </div>
