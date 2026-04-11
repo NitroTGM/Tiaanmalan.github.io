@@ -1,9 +1,13 @@
+/* 🌐 FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 /* 🌐 BASE */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: white;
     text-align: center;
+    overflow-x: hidden;
 }
 
 /* 🌌 BACKGROUND */
@@ -28,7 +32,7 @@ body {
     border-radius: 50%;
     position: absolute;
     animation: move linear infinite;
-    filter: blur(20px);
+    filter: blur(25px);
 }
 
 /* BLOBS */
@@ -47,11 +51,99 @@ body {
     box-shadow: -40vmin 0 8vmin currentColor;
 }
 
-/* CONTENT */
+/* 🧊 GLASS CONTAINER */
 .container {
     position: relative;
     z-index: 1;
-    padding: 20px;
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+    
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+}
+
+/* 😮‍🔥 MAIN HEADING */
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+    background: linear-gradient(45deg, #ff6b81, #ffb6c1, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    letter-spacing: 1px;
+    animation: floatText 3s ease-in-out infinite;
+}
+
+/* 💫 subtle float */
+@keyframes floatText {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 💬 SUBTEXT */
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* ❤️ LOVE NOTE */
+#loveNote {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #ffd1dc;
+    min-height: 24px;
+    transition: 0.3s;
+}
+
+/* 🕒 COUNTDOWN */
+.countdown h3 {
+    margin-top: 20px;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+#timer {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 10px;
+
+    color: #ff8fab;
+    text-shadow: 0 0 15px rgba(255,105,135,0.7);
+}
+
+/* 📸 MEMORIES TITLE */
+h3 {
+    margin-top: 30px;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+/* 📸 GALLERY */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 260px;
+    height: 260px;
+    border-radius: 20px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255, 105, 135, 0.4);
 }
 
 /* ❤️ HEART */
@@ -60,41 +152,39 @@ body {
     justify-content: center;
     margin-top: 20px;
     cursor: pointer;
-    position: relative; /* FIX */
+    position: relative;
 }
 
 .loader {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background: red;
-    position: relative;
     transform: rotate(45deg);
     animation: beat 1.2s infinite;
-    box-shadow: 0 0 20px red;
+    box-shadow: 0 0 25px red;
 }
 
 .loader::before,
 .loader::after {
     content: "";
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     background: red;
     border-radius: 50%;
     position: absolute;
-    box-shadow: 0 0 20px red;
+    box-shadow: 0 0 25px red;
 }
 
 .loader::before {
-    top: -20px;
+    top: -25px;
     left: 0;
 }
 
 .loader::after {
-    left: -20px;
+    left: -25px;
     top: 0;
 }
 
-/* 💓 HEART BEAT */
 @keyframes beat {
     0% { transform: rotate(45deg) scale(0.9); }
     50% { transform: rotate(45deg) scale(1.2); }
@@ -124,15 +214,12 @@ body {
 
 .floating-heart::before {
     top: -7px;
-    left: 0;
 }
 
 .floating-heart::after {
     left: -7px;
-    top: 0;
 }
 
-/* FLOAT ANIMATION */
 @keyframes floatUp {
     0% {
         opacity: 1;
@@ -142,24 +229,4 @@ body {
         opacity: 0;
         transform: translate(-50%, -150px) rotate(45deg) scale(0.5);
     }
-}
-
-/* 📸 GALLERY */
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 50px;
-}
-
-.gallery img {
-    width: 300px;
-    height: 300px;
-    border-radius: 15px;
-    object-fit: cover;
-}
-
-/* 🕒 COUNTDOWN */
-.countdown {
-    margin-top: 20px;
 }
