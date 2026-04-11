@@ -1,76 +1,53 @@
-// 🎯 SAFE ELEMENT GETTERS
 const heartBtn = document.getElementById("heartBtn");
 const loveNote = document.getElementById("loveNote");
 const music = document.getElementById("bgMusic");
 const timer = document.getElementById("timer");
 
-// 💬 LOVE NOTES
 const notes = [
-    "I love you more than yesterday ❤️",
-    "You’re my favorite person ever 🥺",
-    "I can’t wait to see you again 💕",
-    "You make everything better ✨",
-    "Missing you extra today 😭",
-    "Alles sal okay wees 💕",
-    "Jy is net myne, vir ewig en altyd 😍🤭"
+    "I love you ❤️",
+    "You’re my favorite person 🥺",
+    "I miss you 💕",
+    "Forever us 💞"
 ];
 
-let currentIndex = 0;
+let i = 0;
 
-// ❤️ HEART CLICK (SAFE)
-if (heartBtn && loveNote) {
-    heartBtn.addEventListener("click", () => {
-        loveNote.textContent = notes[currentIndex];
-        currentIndex = (currentIndex + 1) % notes.length;
+// ❤️ HEART CLICK
+heartBtn.addEventListener("click", () => {
+    loveNote.textContent = notes[i];
+    i = (i + 1) % notes.length;
 
-        const container = document.querySelector(".heart-container");
+    const container = document.querySelector(".heart-container");
 
-        for (let i = 0; i < 6; i++) {
-            const heart = document.createElement("div");
-            heart.classList.add("floating-heart");
+    for (let x = 0; x < 6; x++) {
+        const h = document.createElement("div");
+        h.className = "floating-heart";
 
-            heart.style.left = "50%";
-            heart.style.top = "50%";
+        h.style.left = "50%";
+        h.style.top = "50%";
 
-            const x = (Math.random() - 0.5) * 80;
-            const y = Math.random() * -80;
-
-            heart.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(45deg)`;
-
-            container.appendChild(heart);
-
-            setTimeout(() => heart.remove(), 1500);
-        }
-    });
-}
+        container.appendChild(h);
+        setTimeout(() => h.remove(), 1500);
+    }
+});
 
 // 🕒 COUNTDOWN
-if (timer) {
-    const targetDate = new Date("2026-08-30").getTime();
+const target = new Date("2026-08-30").getTime();
+setInterval(() => {
+    const now = new Date().getTime();
+    const d = Math.floor((target - now) / (1000*60*60*24));
+    timer.textContent = d + "d";
+}, 1000);
 
-    setInterval(() => {
-        const now = new Date().getTime();
-        const diff = targetDate - now;
+// 🎵 MUSIC
+document.addEventListener("click", () => {
+    music.play();
+});
 
-        if (diff <= 0) {
-            timer.textContent = "We're together ❤️";
-            return;
-        }
+// 🎬 VIDEO + MUSIC
+const videos = document.querySelectorAll(".videoPlayer");
 
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        timer.textContent = `${days}d`;
-    }, 1000);
-}
-
-// 🎵 MUSIC FIX (important)
-if (music) {
-    // Try autoplay
-    music.play().catch(() => {
-        console.log("Autoplay blocked — waiting for user interaction");
-    });
-
-    // Force play on ANY click
-    document.addEventListener("click", () => {
-        music.play();
-    });
-}
+videos.forEach(v => {
+    v.addEventListener("play", () => music.volume = 0.3);
+    v.addEventListener("pause", () => music.volume = 1);
+});
