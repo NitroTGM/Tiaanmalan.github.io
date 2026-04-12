@@ -8,15 +8,13 @@
 </head>
 <body>
 
-<!-- 🌌 BACKGROUND -->
 <div class="background">
-  <span></span><span></span>
+  <span></span>
+  <span></span>
 </div>
 
 <!-- 🎵 MUSIC -->
-<audio id="bgMusic" loop>
-    <source src="song.mp3" type="audio/mp3">
-</audio>
+<audio id="bgMusic"></audio>
 
 <div class="container">
 
@@ -29,6 +27,12 @@
     </div>
 
     <p id="loveNote">Tap the heart ❤️</p>
+
+    <!-- 🎵 MUSIC CONTROLS -->
+    <div class="music-controls">
+        <p id="songName">Playing: ...</p>
+        <button id="nextSongBtn">⏭ Next song</button>
+    </div>
 
     <!-- 🕒 COUNTDOWN -->
     <div class="countdown">
@@ -46,16 +50,13 @@
 
     <!-- 🎬 VIDEOS -->
     <h3>Our moments 🎥</h3>
-
     <div class="video-gallery">
         <video class="videoPlayer" controls>
             <source src="video1.mp4" type="video/mp4">
         </video>
-
         <video class="videoPlayer" controls>
             <source src="video2.mp4" type="video/mp4">
         </video>
-
         <video class="videoPlayer" controls>
             <source src="video3.mp4" type="video/mp4">
         </video>
