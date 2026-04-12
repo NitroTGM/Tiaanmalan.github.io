@@ -8,7 +8,7 @@ body {
     background: #3E1E68;
 }
 
-/* 🌌 BACKGROUND BLOBS */
+/* BACKGROUND */
 .background {
     position: fixed;
     width: 100%;
@@ -36,28 +36,14 @@ body {
     right: 10%;
 }
 
-/* 🧊 GLASS */
+/* CONTAINER */
 .container {
     max-width: 900px;
     margin: 40px auto;
     padding: 30px;
-
     background: rgba(255,255,255,0.05);
     border-radius: 25px;
     backdrop-filter: blur(20px);
-}
-
-/* 😮‍🔥 HEADING */
-h1 {
-    font-size: 3rem;
-    background: linear-gradient(45deg,#ff6b81,#fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.subtitle {
-    opacity: 0.8;
-    font-style: italic;
 }
 
 /* ❤️ PERFECT HEART */
@@ -106,14 +92,7 @@ h1 {
     top: 0;
 }
 
-/* 💓 animation (IMPORTANT: keep rotate here too) */
-@keyframes beat {
-    0% { transform: rotate(-45deg) scale(0.95); }
-    50% { transform: rotate(-45deg) scale(1.15); }
-    100% { transform: rotate(-45deg) scale(0.95); }
-}
-
-/* 💕 FLOATING HEARTS */
+/* FLOATING HEARTS */
 .floating-heart {
     position: absolute;
     width: 15px;
@@ -141,12 +120,24 @@ h1 {
     to { opacity:0; transform: translate(-50%, -150px) rotate(45deg);}
 }
 
-/* 📸 GALLERY */
+/* MUSIC */
+.music-controls {
+    margin-top: 15px;
+}
+
+#nextSongBtn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background: #ff6b81;
+    color: white;
+}
+
+/* GALLERY */
 .gallery {
     display:flex;
     justify-content:center;
     gap:10px;
-    flex-wrap: wrap;
 }
 
 .gallery img {
@@ -154,13 +145,12 @@ h1 {
     border-radius:15px;
 }
 
-/* 🎬 VIDEO */
+/* VIDEOS */
 .video-gallery {
     display:flex;
     gap:20px;
     justify-content:center;
     flex-wrap:wrap;
-    margin-top:20px;
 }
 
 .videoPlayer {
