@@ -157,3 +157,47 @@ body {
     width:250px;
     border-radius:15px;
 }
+
+/* 📸 PHOTO FRAME GALLERY */
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* 🖼️ FRAME STYLE */
+.photo-frame {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 220px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transform: rotate(-2deg);
+    transition: 0.3s;
+}
+
+/* random rotation feel */
+.photo-frame:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.photo-frame:hover {
+    transform: scale(1.05) rotate(0deg);
+}
+
+/* IMAGE */
+.photo-frame img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* CAPTION */
+.photo-frame p {
+    color: black;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    font-weight: 500;
+}
