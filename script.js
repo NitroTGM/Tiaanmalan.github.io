@@ -4,7 +4,7 @@ const songs = [
     {name:"🌙 Late Nights", file:"song2.mp3"},
     {name:"✨ Third Song", file:"song3.mp3"},
     {name:"💫 Fourth Song", file:"song4.mp3"},
-    {name:"🎶 Fifth Song", file:"song5.mp3"}
+    {name:"🎶 Fifth Song", file:"song5.mp3"} // optional (won’t break if missing)
 ];
 
 const audio = document.getElementById("bg-music");
@@ -21,7 +21,10 @@ songs.forEach((song,index)=>{
 
     btn.onclick = ()=>{
         audio.src = song.file;
-        audio.play();
+
+        audio.play().catch(()=>{
+            console.log("⚠️ Audio blocked until interaction");
+        });
 
         document.querySelectorAll(".song-btn")
             .forEach(b=>b.classList.remove("active"));
@@ -33,7 +36,15 @@ songs.forEach((song,index)=>{
     controls.appendChild(btn);
 });
 
+/* 👉 LOAD FIRST SONG */
 audio.src = songs[0].file;
+
+/* 👉 AUTOPLAY FIX (CRITICAL) */
+document.addEventListener("click", ()=>{
+    if(audio.paused){
+        audio.play().catch(()=>{});
+    }
+},{ once:true });
 
 /* 💖 HEART SYSTEM */
 const heart = document.getElementById("heart");
@@ -57,6 +68,11 @@ heart.onclick = () => {
     setTimeout(()=>{
         heart.style.transform = "rotate(-45deg) scale(1)";
     },180);
+
+    /* 🎵 ALSO START MUSIC HERE (extra reliable) */
+    if(audio.paused){
+        audio.play().catch(()=>{});
+    }
 
     /* 💕 HEART BURST */
     const rect = heart.getBoundingClientRect();
