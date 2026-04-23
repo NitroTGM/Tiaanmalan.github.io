@@ -222,3 +222,60 @@ body{
         text-shadow:0 0 25px rgba(255,150,200,1);
     }
 }
+/* 💖 MAIN TITLE UPGRADE */
+.main-title{
+    font-size:48px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-align:center;
+
+    background:linear-gradient(45deg,#ffffff,#ffd1ec,#ff9ecb);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+        0 0 10px rgba(255,150,200,0.6),
+        0 0 25px rgba(255,150,200,0.4),
+        0 0 40px rgba(255,150,200,0.2);
+
+    animation: titleFloat 4s ease-in-out infinite;
+}
+
+/* 💓 FLOAT ANIMATION */
+@keyframes titleFloat{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-6px); }
+}
+
+/* 💕 FLOATING HEARTS */
+.floating-hearts{
+    display:inline-block;
+    margin-left:8px;
+
+    animation: heartsBounce 2s ease-in-out infinite;
+}
+
+@keyframes heartsBounce{
+    0%,100%{ transform:translateY(0) scale(1); }
+    50%{ transform:translateY(-8px) scale(1.1); }
+}
+.main-title::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:-10px;
+
+    width:120px;
+    height:3px;
+
+    background:linear-gradient(90deg,transparent,#ff9ecb,transparent);
+    border-radius:999px;
+
+    animation: glowLine 2s infinite alternate;
+}
+
+@keyframes glowLine{
+    from{ opacity:0.3; width:80px; }
+    to{ opacity:1; width:140px; }
+}
