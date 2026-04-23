@@ -198,3 +198,27 @@ body{
 
 .mini-heart::before{ top:-6px; }
 .mini-heart::after{ left:6px; }
+
+/* ⏳ COUNTDOWN */
+.countdown-title{
+    margin-top:25px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+#countdown{
+    font-size:30px;
+    font-weight:700;
+    color:#ffd1ec;
+
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+    0%,100%{
+        text-shadow:0 0 10px rgba(255,150,200,0.5);
+    }
+    50%{
+        text-shadow:0 0 25px rgba(255,150,200,1);
+    }
+}
