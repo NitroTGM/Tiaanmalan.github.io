@@ -1,203 +1,200 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+body{
+    margin:0;
+    font-family:Poppins, sans-serif;
+    color:white;
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    text-align: center;
-    background: #3E1E68;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
-/* BACKGROUND */
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+/* 🌸 BACKGROUND */
+.bg-back{
+    position:fixed;
+    inset:0;
+    background:url("blossom.gif") center/cover no-repeat;
+    z-index:-3;
+
+    animation: zoom 25s ease-in-out infinite alternate;
 }
 
-.background span {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(80px);
+.bg-overlay{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255,120,180,0.25), transparent),
+        linear-gradient(to bottom, rgba(30,10,50,0.5), rgba(10,0,25,0.7));
 }
 
-.background span:nth-child(1) {
-    background: #ff6b81;
-    top: 10%;
-    left: 10%;
+.bg-front{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    backdrop-filter: blur(1px);
 }
 
-.background span:nth-child(2) {
-    background: #a855f7;
-    bottom: 10%;
-    right: 10%;
+@keyframes zoom{
+    0%{ transform:scale(1.05);}
+    100%{ transform:scale(1.15);}
 }
 
-/* CONTAINER */
-.container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 25px;
-    backdrop-filter: blur(20px);
+/* 💜 MAIN */
+.container{
+    text-align:center;
+    margin-top:80px;
 }
 
-/* ❤️ PERFECT HEART */
-.heart-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    position: relative;
+.subtitle{
+    opacity:0.8;
 }
 
-.loader {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    transform: rotate(-45deg);
-    animation: beat 1.2s infinite;
+/* 💖 HEART */
+#heart{
+    width:80px;
+    height:80px;
+    background:linear-gradient(45deg,#ff6b9d,#ff3d6d);
+    position:relative;
+    margin:30px auto;
+    transform:rotate(-45deg);
+    cursor:pointer;
+
+    box-shadow:
+        0 0 25px rgba(255,100,150,0.8),
+        0 0 50px rgba(255,100,150,0.5);
 }
 
-/* main square */
-.loader {
-    background: red;
-    box-shadow: 0 0 25px red;
-}
-
-/* circles */
-.loader::before,
-.loader::after {
-    content: "";
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background: red;
-    border-radius: 50%;
-    box-shadow: 0 0 25px red;
-}
-
-/* top circle */
-.loader::before {
-    top: -25px;
-    left: 0;
-}
-
-/* right circle */
-.loader::after {
-    left: 25px;
-    top: 0;
-}
-
-/* FLOATING HEARTS */
-.floating-heart {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: red;
-    transform: rotate(45deg);
-    animation: floatUp 1.5s forwards;
-}
-
-.floating-heart::before,
-.floating-heart::after {
+#heart::before,
+#heart::after{
     content:"";
-    width:15px;
-    height:15px;
-    background:red;
+    width:80px;
+    height:80px;
+    background:inherit;
     border-radius:50%;
     position:absolute;
 }
 
-.floating-heart::before { top:-7px; }
-.floating-heart::after { left:-7px; }
+#heart::before{ top:-40px; left:0; }
+#heart::after{ left:40px; top:0; }
 
-@keyframes floatUp {
-    from { opacity:1; transform: translate(-50%, -50%) rotate(45deg);}
-    to { opacity:0; transform: translate(-50%, -150px) rotate(45deg);}
-}
-
-/* MUSIC */
-.music-controls {
-    margin-top: 15px;
-}
-
-#nextSongBtn {
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: none;
-    background: #ff6b81;
-    color: white;
-}
-
-/* GALLERY */
-.gallery {
+/* 🎧 SONG BUTTONS */
+.song-controls{
     display:flex;
     justify-content:center;
     gap:10px;
-}
-
-.gallery img {
-    width:250px;
-    border-radius:15px;
-}
-
-/* VIDEOS */
-.video-gallery {
-    display:flex;
-    gap:20px;
-    justify-content:center;
     flex-wrap:wrap;
+    margin-top:15px;
 }
 
-.videoPlayer {
-    width:250px;
-    border-radius:15px;
+.song-btn{
+    padding:10px 18px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+
+    background:rgba(255,255,255,0.1);
+    color:white;
+
+    transition:0.3s;
 }
 
-/* 📸 PHOTO FRAME GALLERY */
-.photo-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 30px;
+.song-btn:hover{
+    background:rgba(255,120,200,0.3);
+    transform:translateY(-2px);
 }
 
-/* 🖼️ FRAME STYLE */
-.photo-frame {
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    width: 220px;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    transform: rotate(-2deg);
-    transition: 0.3s;
+.song-btn.active{
+    background:linear-gradient(45deg,#ff7eb3,#ff4d6d);
+    box-shadow:0 0 20px pink;
 }
 
-/* random rotation feel */
-.photo-frame:nth-child(even) {
-    transform: rotate(2deg);
+/* 📸 GALLERY */
+.gallery{
+    margin-top:80px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:40px;
+    padding:40px;
+    max-width:1000px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-.photo-frame:hover {
-    transform: scale(1.05) rotate(0deg);
+.polaroid{
+    background:white;
+    border-radius:12px;
+    padding:10px;
+    text-align:center;
+    color:#333;
+
+    transform:rotate(-2deg);
+    transition:0.3s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* IMAGE */
-.photo-frame img {
-    width: 100%;
-    border-radius: 8px;
+.polaroid:nth-child(even){
+    transform:rotate(2deg);
 }
 
-/* CAPTION */
-.photo-frame p {
-    color: black;
-    font-size: 0.9rem;
-    margin-top: 8px;
-    font-weight: 500;
+.polaroid:hover{
+    transform:scale(1.05) rotate(0deg);
 }
+
+.polaroid img{
+    width:100%;
+    border-radius:8px;
+}
+
+.polaroid p{
+    margin-top:10px;
+    font-size:14px;
+}
+
+/* 💫 SPARKLES */
+.sparkle{
+    position:fixed;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    pointer-events:none;
+
+    box-shadow:
+        0 0 6px white,
+        0 0 12px pink;
+}
+
+/* 🌸 PETALS */
+.petal{
+    position:fixed;
+    width:8px;
+    height:8px;
+    background:#ff9ecb;
+    border-radius:50% 50% 50% 0;
+    pointer-events:none;
+}
+
+/* 💕 MINI HEART PARTICLES */
+.mini-heart{
+    position:fixed;
+    width:12px;
+    height:12px;
+    background:linear-gradient(45deg,#ff6b9d,#ff3d6d);
+    transform:rotate(-45deg);
+    pointer-events:none;
+    z-index:999;
+}
+
+.mini-heart::before,
+.mini-heart::after{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:inherit;
+    border-radius:50%;
+}
+
+.mini-heart::before{ top:-6px; }
+.mini-heart::after{ left:6px; }
