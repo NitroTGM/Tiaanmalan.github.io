@@ -1,91 +1,126 @@
-// ELEMENTS
-const heartBtn = document.getElementById("heartBtn");
-const loveNote = document.getElementById("loveNote");
-const music = document.getElementById("bgMusic");
-const timer = document.getElementById("timer");
-
-// 💬 MESSAGES
-const notes = [
-    "I love you ❤️",
-    "You’re my favorite person 🥺",
-    "I miss you 💕",
-    "Forever us 💞"
-];
-
-const secretMessage = "If you found this… I love you more than words can explain ❤️";
-
-let i = 0;
-let tapCount = 0;
-let tapTimer;
-
-// ❤️ HEART
-heartBtn.addEventListener("click", () => {
-    loveNote.textContent = notes[i];
-    i = (i + 1) % notes.length;
-
-    tapCount++;
-    clearTimeout(tapTimer);
-    tapTimer = setTimeout(() => tapCount = 0, 1500);
-
-    if (tapCount >= 5) {
-        loveNote.textContent = secretMessage;
-        tapCount = 0;
-    }
-
-    const container = document.querySelector(".heart-container");
-
-    for (let x = 0; x < 6; x++) {
-        const h = document.createElement("div");
-        h.className = "floating-heart";
-        h.style.left = "50%";
-        h.style.top = "50%";
-        container.appendChild(h);
-        setTimeout(() => h.remove(), 1500);
-    }
-});
-
-// 🕒 COUNTDOWN
-const target = new Date("2026-08-30").getTime();
-setInterval(() => {
-    const now = new Date().getTime();
-    const d = Math.floor((target - now) / (1000*60*60*24));
-    timer.textContent = d + "d";
-}, 1000);
-
-// 🎵 MUSIC
+/* 🎵 SONGS */
 const songs = [
-    { file: "song.mp3", name: "Our Song ❤️" },
-    { file: "song2.mp3", name: "Another Memory 💕" }
+    {name:"❤️ Our Song", file:"song1.mp3"},
+    {name:"🌙 Late Nights", file:"song2.mp3"},
+    {name:"✨ Third Song", file:"song3.mp3"},
+    {name:"💫 Fourth Song", file:"song4.mp3"},
+    {name:"🎶 Fifth Song", file:"song5.mp3"}
 ];
 
-let currentSong = 0;
-const songName = document.getElementById("songName");
-const nextBtn = document.getElementById("nextSongBtn");
+const audio = document.getElementById("bg-music");
+const controls = document.querySelector(".song-controls");
+const songName = document.getElementById("song-name");
 
-function playSong(index) {
-    music.src = songs[index].file;
-    songName.textContent = "Playing: " + songs[index].name;
-    music.play().catch(() => {});
-}
+/* 🎧 BUTTONS */
+songs.forEach((song,index)=>{
+    const btn = document.createElement("button");
+    btn.className = "song-btn";
+    btn.textContent = song.name;
 
-function nextSong() {
-    currentSong = (currentSong + 1) % songs.length;
-    playSong(currentSong);
-}
+    if(index===0) btn.classList.add("active");
 
-nextBtn.addEventListener("click", nextSong);
-music.addEventListener("ended", nextSong);
+    btn.onclick = ()=>{
+        audio.src = song.file;
+        audio.play();
 
-playSong(currentSong);
+        document.querySelectorAll(".song-btn")
+            .forEach(b=>b.classList.remove("active"));
 
-document.addEventListener("click", () => {
-    music.play();
+        btn.classList.add("active");
+        songName.textContent = "Playing: " + song.name;
+    };
+
+    controls.appendChild(btn);
 });
 
-// 🎬 VIDEO
-const videos = document.querySelectorAll(".videoPlayer");
+audio.src = songs[0].file;
 
-videos.forEach(v => {
-    v.addEventListener("play", () => music.volume = 0.3);
-    v.addEventListener("pause", () => music.volume = 1);
+/* 💖 HEART SYSTEM */
+const heart = document.getElementById("heart");
+const message = document.getElementById("message");
+
+const messages = [
+    "I miss you 💕",
+    "Forever us 💖",
+    "You're my favorite 🥺",
+    "Come back soon ❤️"
+];
+
+heart.onclick = () => {
+
+    /* 💬 message */
+    const random = Math.floor(Math.random()*messages.length);
+    message.textContent = messages[random];
+
+    /* 💥 STRONG THUMP */
+    heart.style.transform = "rotate(-45deg) scale(1.4)";
+    setTimeout(()=>{
+        heart.style.transform = "rotate(-45deg) scale(1)";
+    },180);
+
+    /* 💕 HEART BURST */
+    const rect = heart.getBoundingClientRect();
+    const cx = rect.left + rect.width/2;
+    const cy = rect.top + rect.height/2;
+
+    for(let i=0;i<14;i++){
+        const h = document.createElement("div");
+        h.className = "mini-heart";
+        document.body.appendChild(h);
+
+        h.style.left = cx + "px";
+        h.style.top = cy + "px";
+
+        const angle = Math.random()*Math.PI*2;
+        const dist = 80 + Math.random()*70;
+
+        const x = Math.cos(angle)*dist;
+        const y = Math.sin(angle)*dist;
+
+        h.animate([
+            {transform:"translate(0,0) scale(1)", opacity:1},
+            {transform:`translate(${x}px,${y}px) scale(0.5)`, opacity:0}
+        ],{duration:900});
+
+        setTimeout(()=>h.remove(),900);
+    }
+};
+
+/* 🌌 PARALLAX */
+let tx=0,ty=0,cx=0,cy=0;
+
+document.addEventListener("mousemove",(e)=>{
+    tx=(e.clientX/window.innerWidth-0.5)*30;
+    ty=(e.clientY/window.innerHeight-0.5)*30;
+});
+
+function animate(){
+    cx+=(tx-cx)*0.05;
+    cy+=(ty-cy)*0.05;
+
+    document.querySelector(".bg-back").style.transform =
+        `scale(1.1) translate(${cx}px,${cy}px)`;
+
+    requestAnimationFrame(animate);
+}
+animate();
+
+/* 💫 SPARKLES + PETALS */
+document.addEventListener("mousemove",(e)=>{
+    if(Math.random()>0.85) return;
+
+    const el=document.createElement("div");
+    el.className=Math.random()>0.5?"sparkle":"petal";
+
+    el.style.left=e.clientX+"px";
+    el.style.top=e.clientY+"px";
+
+    document.body.appendChild(el);
+
+    el.animate([
+        {opacity:1,transform:"translateY(0)"},
+        {opacity:0,transform:"translateY(40px)"}
+    ],{duration:800});
+
+    setTimeout(()=>el.remove(),800);
 });
