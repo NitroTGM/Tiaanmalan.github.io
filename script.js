@@ -4,7 +4,7 @@ const songs = [
     {name:"🌙 Late Nights", file:"song2.mp3"},
     {name:"✨ Third Song", file:"song3.mp3"},
     {name:"💫 Fourth Song", file:"song4.mp3"},
-    {name:"🎶 Fifth Song", file:"song5.mp3"} // optional (won’t break if missing)
+    {name:"🎶 Fifth Song", file:"song5.mp3"}
 ];
 
 const audio = document.getElementById("bg-music");
@@ -21,10 +21,7 @@ songs.forEach((song,index)=>{
 
     btn.onclick = ()=>{
         audio.src = song.file;
-
-        audio.play().catch(()=>{
-            console.log("⚠️ Audio blocked until interaction");
-        });
+        audio.play();
 
         document.querySelectorAll(".song-btn")
             .forEach(b=>b.classList.remove("active"));
@@ -36,15 +33,7 @@ songs.forEach((song,index)=>{
     controls.appendChild(btn);
 });
 
-/* 👉 LOAD FIRST SONG */
 audio.src = songs[0].file;
-
-/* 👉 AUTOPLAY FIX (CRITICAL) */
-document.addEventListener("click", ()=>{
-    if(audio.paused){
-        audio.play().catch(()=>{});
-    }
-},{ once:true });
 
 /* 💖 HEART SYSTEM */
 const heart = document.getElementById("heart");
@@ -59,22 +48,16 @@ const messages = [
 
 heart.onclick = () => {
 
-    /* 💬 message */
     const random = Math.floor(Math.random()*messages.length);
     message.textContent = messages[random];
 
-    /* 💥 STRONG THUMP */
+    /* 💥 THUMP */
     heart.style.transform = "rotate(-45deg) scale(1.4)";
     setTimeout(()=>{
         heart.style.transform = "rotate(-45deg) scale(1)";
     },180);
 
-    /* 🎵 ALSO START MUSIC HERE (extra reliable) */
-    if(audio.paused){
-        audio.play().catch(()=>{});
-    }
-
-    /* 💕 HEART BURST */
+    /* 💕 BURST */
     const rect = heart.getBoundingClientRect();
     const cx = rect.left + rect.width/2;
     const cy = rect.top + rect.height/2;
@@ -140,3 +123,29 @@ document.addEventListener("mousemove",(e)=>{
 
     setTimeout(()=>el.remove(),800);
 });
+
+/* ⏳ COUNTDOWN */
+const countdownEl = document.getElementById("countdown");
+
+/* 👉 CHANGE THIS DATE */
+const targetDate = new Date("2026-09-01 00:00:00").getTime();
+
+function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if(diff <= 0){
+        countdownEl.textContent = "We're together ❤️";
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    countdownEl.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
