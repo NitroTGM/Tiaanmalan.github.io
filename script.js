@@ -128,7 +128,7 @@ document.addEventListener("mousemove",(e)=>{
 const countdownEl = document.getElementById("countdown");
 
 /* 👉 CHANGE THIS DATE */
-const targetDate = new Date("2026-07-20 04:00:00").getTime();
+const targetDate = new Date("2026-09-01 00:00:00").getTime();
 
 function updateCountdown(){
     const now = new Date().getTime();
