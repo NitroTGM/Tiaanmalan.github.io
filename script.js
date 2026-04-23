@@ -1,6 +1,6 @@
 /* 🎵 SONGS */
 const songs = [
-    {name:"❤️ Our Song", file:"song1.mp3"},
+    {name:"❤️ Our Song", file:"song.mp3"},
     {name:"🌙 Late Nights", file:"song2.mp3"},
     {name:"✨ Third Song", file:"song3.mp3"},
     {name:"💫 Fourth Song", file:"song4.mp3"},
